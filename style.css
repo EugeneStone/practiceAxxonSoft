@@ -1,0 +1,10 @@
+
+.table {
+    transform: rotate(-90deg);
+    border:  solid white;
+    }
+    
+.td{
+    border-color:black;
+    background-color: red;
+}
