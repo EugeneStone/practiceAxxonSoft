@@ -2,11 +2,23 @@
     
     {
         display:inline-block;
-         width:20px;
-         margin-top:20px;
+         width:30px;
+         position: relative;
          background:red;
          border-style: solid;
          border-color: white;
-         vertical-align:bottom;
-         text-align: bottom;
+         vertical-align: bottom;
+         
+              
+    }
+
+    .p{
+        
+        margin: 0;
+        position: absolute; 
+        top: 50%;
+        left:50%;                    
+        transform: translate(-50%, -50%);
+       
+       
     }

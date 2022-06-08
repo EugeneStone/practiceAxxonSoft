@@ -7,13 +7,13 @@ function drawHystogram(){
       
     let numbers = document.getElementById('numbers');
     let myDiv = document.getElementById('myDiv');
-    let numberArray = numbers.value.split('');
+    let numberArray = numbers.value.split(' ');
        
     for (let i = 0; i < numberArray.length; i++){
       let newDiv = document.createElement('div');
-      newDiv.innerHTML = numberArray[i];
+      newDiv.innerHTML =`<p class = 'p'>  ${numberArray[i]} </p>`;
       newDiv.className ='newDiv';
-      newDiv.style.height = `${10*numberArray[i]}px`;
+      newDiv.style.height = `${1*numberArray[i]}px`;
       myDiv.before(newDiv);
 
     }
