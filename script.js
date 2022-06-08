@@ -6,27 +6,22 @@ let buttonDelete = document.getElementById('buttonDelete');
 function drawHystogram(){
       
     let numbers = document.getElementById('numbers');
-    let myTable = document.getElementById("table");
+    let myDiv = document.getElementById('myDiv');
     let numberArray = numbers.value.split('');
        
     for (let i = 0; i < numberArray.length; i++){
-      let newTr = document.createElement('tr');
-      myTable.append(newTr);
+      let newDiv = document.createElement('div');
+      newDiv.innerHTML = numberArray[i];
+      newDiv.className ='newDiv';
+      newDiv.style.height = `${10*numberArray[i]}px`;
+      myDiv.before(newDiv);
 
-    for (let j = 0; j < numberArray[i]; j++){
-      let newTd = document.createElement('td');
-        newTd.className = 'td';
-        newTr.append(newTd);
-    
-    }}     
- 
+    }
 }
-
 button.addEventListener('click',  drawHystogram);
 
 buttonDelete.addEventListener('click', ()=>{ 
-let myTable = document.getElementById("table");
-    while (myTable.firstChild) {
-        myTable.removeChild(myTable.firstChild);
-}}
+  let myDiv = document.querySelectorAll('.newDiv');
+    myDiv.forEach(elem => elem.remove())
+}
 );
