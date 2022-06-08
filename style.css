@@ -1,24 +1,20 @@
-.newDiv
+
+
+.divContainer{
+    display:flex;
+    align-items: flex-end;
+}
+
+.divColumn
     
     {
-        display:inline-block;
+        display:flex;
          width:30px;
-         position: relative;
          background:red;
          border-style: solid;
          border-color: white;
-         vertical-align: bottom;
-         
+         align-items:center;
+         justify-content: center;
               
     }
 
-    .p{
-        
-        margin: 0;
-        position: absolute; 
-        top: 50%;
-        left:50%;                    
-        transform: translate(-50%, -50%);
-       
-       
-    }

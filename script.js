@@ -1,27 +1,27 @@
-let button = document.getElementById('button');
-let buttonDelete = document.getElementById('buttonDelete');
+const buttonDraw = document.getElementById('button');
+const buttonDelete = document.getElementById('buttonDelete');
 
 
     
 function drawHystogram(){
       
-    let numbers = document.getElementById('numbers');
-    let myDiv = document.getElementById('myDiv');
-    let numberArray = numbers.value.split(' ');
+    let inputNumbers = document.getElementById('numbers');
+    const divContainer = document.getElementById('divContainer');
+    numbersArray = inputNumbers.value.split(' ');
        
-    for (let i = 0; i < numberArray.length; i++){
-      let newDiv = document.createElement('div');
-      newDiv.innerHTML =`<p class = 'p'>  ${numberArray[i]} </p>`;
-      newDiv.className ='newDiv';
-      newDiv.style.height = `${1*numberArray[i]}px`;
-      myDiv.before(newDiv);
+    for (let i = 0; i < numbersArray.length; i++){
+      const newColumn = document.createElement('div');
+      newColumn.innerHTML = numbersArray[i];
+      newColumn.className ='divColumn';
+      newColumn.style.height = `${numbersArray[i]}px`;
+      divContainer.append(newColumn);
 
     }
 }
-button.addEventListener('click',  drawHystogram);
+buttonDraw.addEventListener('click',  drawHystogram);
 
 buttonDelete.addEventListener('click', ()=>{ 
-  let myDiv = document.querySelectorAll('.newDiv');
-    myDiv.forEach(elem => elem.remove())
+  columnsForDelete = document.querySelectorAll('.divColumn');
+  columnsForDelete.forEach(elem => elem.remove())
 }
 );
