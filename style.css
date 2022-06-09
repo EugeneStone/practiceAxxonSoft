@@ -10,11 +10,9 @@
     {
         display:flex;
          width:30px;
-         background:red;
-         border-style: solid;
-         border-color: white;
+         background:rgb(219, 30, 30);
          align-items:center;
          justify-content: center;
-              
+         margin:10px 10px 0px 0px;     
     }
 

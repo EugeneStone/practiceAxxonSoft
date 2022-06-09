@@ -1,13 +1,37 @@
+'use strict'
 const buttonDraw = document.getElementById('button');
 const buttonDelete = document.getElementById('buttonDelete');
 
 
-    
-function drawHystogram(){
+function validator(){
+const inputNumbers = document.getElementById('numbers');
+
+  if (!inputNumbers.value){
+        alert('Поле ввода не должно быть пустым');
+  }
+  else{ 
+    inputNumbers.value = inputNumbers.value.replace(/\s+/g, ' ').trim()
+    let numbersArray = inputNumbers.value.split(' ');
+     
+      for (let i = 0; i < numbersArray.length; i++){
+          if( isNaN(numbersArray[i])){
+           alert('Ввод должен содержать только числа');
+             return;
+           }
+         }
       
-    let inputNumbers = document.getElementById('numbers');
+        drawHistogram();
+      
+  }
+}   
+
+
+function drawHistogram(){
+      
+    const inputNumbers = document.getElementById('numbers');
     const divContainer = document.getElementById('divContainer');
-    numbersArray = inputNumbers.value.split(' ');
+    inputNumbers.value = inputNumbers.value.replace(/\s+/g, ' ').trim();
+    let numbersArray = inputNumbers.value.split(' ');
        
     for (let i = 0; i < numbersArray.length; i++){
       const newColumn = document.createElement('div');
@@ -17,11 +41,15 @@ function drawHystogram(){
       divContainer.append(newColumn);
 
     }
+    buttonDraw.removeEventListener('click', validator);
 }
-buttonDraw.addEventListener('click',  drawHystogram);
+buttonDraw.addEventListener('click',  validator);
 
 buttonDelete.addEventListener('click', ()=>{ 
-  columnsForDelete = document.querySelectorAll('.divColumn');
-  columnsForDelete.forEach(elem => elem.remove())
+  const columnsForDelete = document.querySelectorAll('.divColumn');
+  columnsForDelete.forEach(elem => elem.remove());
+  buttonDraw.addEventListener('click',  validator);
+  const inputNumbers = document.getElementById('numbers');
+  inputNumbers.value = null;
 }
 );
