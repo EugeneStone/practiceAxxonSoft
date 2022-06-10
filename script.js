@@ -10,11 +10,10 @@ const inputNumbers = document.getElementById('numbers');
         alert('Поле ввода не должно быть пустым');
   }
   else{ 
-    inputNumbers.value = inputNumbers.value.replace(/\s+/g, ' ').trim()
-    let numbersArray = inputNumbers.value.split(' ');
-     
+    const numbersArray = inputNumbers.value.replace(/\s+/g, '').trim().split('');
+    
       for (let i = 0; i < numbersArray.length; i++){
-          if( isNaN(numbersArray[i])){
+          if( !Number.isInteger(Number(numbersArray[i]))){
            alert('Ввод должен содержать только числа');
              return;
            }
@@ -30,8 +29,8 @@ function drawHistogram(){
       
     const inputNumbers = document.getElementById('numbers');
      const divContainer = document.getElementById('ContainerHistogram');
-      inputNumbers.value = inputNumbers.value.replace(/\s+/g, ' ').trim();
-       let numbersArray = inputNumbers.value.split(' ');
+     const numbersArray = inputNumbers.value.replace(/\s+/g, ' ').trim().split(' ');
+      
        
     for (let i = 0; i < numbersArray.length; i++){
       const newColumn = document.createElement('div');
