@@ -29,27 +29,33 @@ const inputNumbers = document.getElementById('numbers');
 function drawHistogram(){
       
     const inputNumbers = document.getElementById('numbers');
-    const divContainer = document.getElementById('divContainer');
-    inputNumbers.value = inputNumbers.value.replace(/\s+/g, ' ').trim();
-    let numbersArray = inputNumbers.value.split(' ');
+     const divContainer = document.getElementById('ContainerHistogram');
+      inputNumbers.value = inputNumbers.value.replace(/\s+/g, ' ').trim();
+       let numbersArray = inputNumbers.value.split(' ');
        
     for (let i = 0; i < numbersArray.length; i++){
       const newColumn = document.createElement('div');
-      newColumn.innerHTML = numbersArray[i];
-      newColumn.className ='divColumn';
-      newColumn.style.height = `${numbersArray[i]}px`;
-      divContainer.append(newColumn);
+       newColumn.innerHTML = numbersArray[i];
+        newColumn.className ='Column';
+         newColumn.style.height = `${numbersArray[i]}px`;
+          divContainer.append(newColumn);
 
     }
-    buttonDraw.removeEventListener('click', validator);
+    
 }
-buttonDraw.addEventListener('click',  validator);
+function clearHistogram(){
+  const columnsForDelete = document.querySelectorAll('.Column');
+   columnsForDelete.forEach(elem => elem.remove());
+   
 
-buttonDelete.addEventListener('click', ()=>{ 
-  const columnsForDelete = document.querySelectorAll('.divColumn');
-  columnsForDelete.forEach(elem => elem.remove());
-  buttonDraw.addEventListener('click',  validator);
-  const inputNumbers = document.getElementById('numbers');
-  inputNumbers.value = null;
 }
-);
+
+buttonDraw.addEventListener('click', ()=>{
+  const columnsForDelete = document.querySelectorAll('.Column');
+  if (columnsForDelete.value != ''){
+    clearHistogram();}
+    validator()});
+
+buttonDelete.addEventListener('click', clearHistogram);
+
+

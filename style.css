@@ -1,11 +1,11 @@
 
 
-.divContainer{
+.ContainerHistogram{
     display:flex;
     align-items: flex-end;
 }
 
-.divColumn
+.Column
     
     {
         display:flex;
