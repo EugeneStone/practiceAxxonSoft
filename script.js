@@ -29,7 +29,10 @@ function validator() {
 
 
 function drawHistogram() {
-
+  const columns = document.querySelectorAll('.сolumn');
+  if (columns.value != '') {
+    clearHistogram();
+  }
   const inputNumbers = document.getElementById('numbers');
   const divContainer = document.getElementById('сontainerHistogram');
   const numbersArray = inputNumbers.value
@@ -56,11 +59,7 @@ function clearHistogram() {
 }
 
 buttonDraw.addEventListener('click', () => {
-  const columnsForDelete = document.querySelectorAll('.сolumn');
-  if (columnsForDelete.value != '') {
-    clearHistogram();
-  }
-  validator()
+    validator()
 });
 
 buttonDelete.addEventListener('click', clearHistogram);
