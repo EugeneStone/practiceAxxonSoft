@@ -1,6 +1,7 @@
 "use strict";
 const buttonDraw = document.getElementById("button");
 const buttonDelete = document.getElementById("buttonDelete");
+const buttonSort = document.getElementById("buttonSort");
 
 function validator() {
   const inputNumbers = document.getElementById("numbers");
@@ -24,17 +25,19 @@ function validator() {
   }
 }
 
-function bubbleSort(arr) {
-  for (let i = 0, endI = arr.length - 1; i < endI; i++) {
-    for (let j = 0, endJ = endI - i; j < endJ; j++) {
-      if (Number(arr[j]) > Number(arr[j + 1])) {
-        let swap = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = swap;
+function bubbleSort() {
+
+  let columnsForSort = document.querySelectorAll(".сolumn");
+  const container = document.getElementById("сontainerHistogram");
+  for (let i = 0; i < columnsForSort.length; i++) {
+    for (let j = 0; j < columnsForSort.length - 1; j++) {
+      if (Number(columnsForSort[j].textContent) > Number(columnsForSort[j + 1].textContent)) {
+        container.insertBefore(columnsForSort[j + 1], columnsForSort[j]);
+        columnsForSort = document.querySelectorAll(".сolumn");
       }
-    }
-  }
-  return arr;
+    } 
+  } 
+  
 }
 function drawHistogram() {
   const columns = document.querySelectorAll(".сolumn");
@@ -48,8 +51,7 @@ function drawHistogram() {
     .trim()
     .split(" ");
 
-  bubbleSort(numbersArray);
-  for (let i = 0; i < numbersArray.length; i++) {
+    for (let i = 0; i < numbersArray.length; i++) {
     const newColumn = document.createElement("div");
     newColumn.innerText = numbersArray[i];
     newColumn.className = "сolumn";
@@ -67,3 +69,4 @@ buttonDraw.addEventListener("click", () => {
 });
 
 buttonDelete.addEventListener("click", clearHistogram);
+buttonSort.addEventListener("click", bubbleSort);
