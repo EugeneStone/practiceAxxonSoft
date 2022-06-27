@@ -1,11 +1,11 @@
 
 
-.сontainerHistogram{
+.containerHistogram{
     display:flex;
     align-items: flex-end;
 }
 
-.сolumn
+.column
     
     {
         display:flex;
@@ -14,5 +14,25 @@
          align-items:center;
          justify-content: center;
          margin:10px 10px 0px 0px;     
+      
     }
 
+#moveRight{
+ animation: moveRight 2.1s  infinite;
+}
+  @keyframes  moveRight {
+    to {
+        transform: translate(40px);
+        
+    }
+  }
+  
+  #moveLeft{
+    animation: moveLeft 2.1s  infinite;
+   }
+     @keyframes  moveLeft {
+       to {
+           transform: translate(-40px);
+           
+       }
+     }

@@ -26,41 +26,51 @@ function validator() {
 }
 
 function bubbleSort() {
+  let columnsForSort = document.querySelectorAll(".column");
+  for (let i = 0; i < columnsForSort.length - 1; i++)
+    if (
+      Number(columnsForSort[i].textContent) >
+      Number(columnsForSort[i + 1].textContent)
+    ) {
+      columnsForSort[i + 1].id ="moveLeft";
+      columnsForSort[i].id = "moveRight";
 
-  let columnsForSort = document.querySelectorAll(".сolumn");
-  const container = document.getElementById("сontainerHistogram");
-  for (let i = 0; i < columnsForSort.length; i++) {
-    for (let j = 0; j < columnsForSort.length - 1; j++) {
-      if (Number(columnsForSort[j].textContent) > Number(columnsForSort[j + 1].textContent)) {
-        container.insertBefore(columnsForSort[j + 1], columnsForSort[j]);
-        columnsForSort = document.querySelectorAll(".сolumn");
-      }
-    } 
-  } 
+      setTimeout(() => {
+        columnsForSort.forEach((element) => {
+          element.id = "";
+        });
+        columnsForSort[i].before(columnsForSort[i + 1]);
+        columnsForSort = document.querySelectorAll(".column");
   
+        bubbleSort();
+      }, 2000);
+      break;
+    }
 }
+
 function drawHistogram() {
-  const columns = document.querySelectorAll(".сolumn");
+  const columns = document.querySelectorAll(".column");
   if (columns.value != "") {
     clearHistogram();
   }
   const inputNumbers = document.getElementById("numbers");
-  const divContainer = document.getElementById("сontainerHistogram");
+  const divContainer = document.getElementById("containerHistogram");
   const numbersArray = inputNumbers.value
     .replace(/\s+/g, " ")
     .trim()
     .split(" ");
 
-    for (let i = 0; i < numbersArray.length; i++) {
+  for (let i = 0; i < numbersArray.length; i++) {
     const newColumn = document.createElement("div");
     newColumn.innerText = numbersArray[i];
-    newColumn.className = "сolumn";
+    newColumn.className = "column";
+
     newColumn.style.height = `${numbersArray[i]}px`;
     divContainer.append(newColumn);
   }
 }
 function clearHistogram() {
-  const columnsForDelete = document.querySelectorAll(".сolumn");
+  const columnsForDelete = document.querySelectorAll(".column");
   columnsForDelete.forEach((elem) => elem.remove());
 }
 
